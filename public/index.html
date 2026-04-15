@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>DUO フラッシュカード</title>
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <main class="app">
+    <h1>DUO セクション1〜4 フラッシュカード</h1>
+
+    <div class="chips">
+      <span class="chip">タップで答え表示</span>
+      <span class="chip">左右スワイプで移動</span>
+      <span class="chip">ダークモード自動対応</span>
+    </div>
+
+    <section class="toolbar">
+      <select id="sectionFilter">
+        <option value="all">全セクション</option>
+        <option value="セクション1">セクション1</option>
+        <option value="セクション2">セクション2</option>
+        <option value="セクション3">セクション3</option>
+        <option value="セクション4">セクション4</option>
+      </select>
+      <button id="shuffleBtn">シャッフル</button>
+      <button id="toggleBtn">答えを見る</button>
+    </section>
+
+    <section class="progress">
+      <div class="progress-top">
+        <span id="counter"></span>
+        <span id="currentSection"></span>
+      </div>
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+    </section>
+
+    <section id="card" class="card">
+      <div id="cardSection" class="section-pill"></div>
+      <div id="cardPrompt" class="prompt"></div>
+
+      <div id="frontView">
+        <div id="phrase" class="phrase"></div>
+        <div class="box">
+          <div class="label">ENGLISH</div>
+          <div id="example" class="text"></div>
+        </div>
+      </div>
+
+      <div id="backView" class="hidden">
+        <div id="meaning" class="meaning"></div>
+        <div class="box">
+          <div class="label">ENGLISH</div>
+          <div id="exampleBack" class="text"></div>
+          <div id="translation" class="translation"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nav">
+      <button id="prevBtn">← 前へ</button>
+      <button id="nextBtn">次へ →</button>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
