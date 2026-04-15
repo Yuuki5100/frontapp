@@ -1,13 +1,14 @@
 :root {
-  --bg: #f5f7fb;
-  --surface: #ffffff;
-  --surface-2: #eef2ff;
-  --text: #111827;
-  --muted: #6b7280;
-  --accent: #4f46e5;
-  --accent-soft: #e0e7ff;
-  --border: #dbe3f0;
-  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --bg: #0b1020;
+  --surface: #121a2b;
+  --surface-2: #18233d;
+  --text: #f3f4f6;
+  --muted: #a8b0c0;
+  --accent: #8b9cff;
+  --accent-soft: #202c4b;
+  --border: #26324d;
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+  --good: #5eead4;
 }
 
 body {
@@ -59,4 +60,16 @@ button, select {
 
 .hidden {
   display: none;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+select,
+button {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
 }
