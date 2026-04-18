@@ -1,4 +1,4 @@
-const grammarCardsData = [
+const cardsData = [
   {
     "section": "セクション1",
     "phrase": "I am ~.",
