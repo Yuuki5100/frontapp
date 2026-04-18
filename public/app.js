@@ -6,6 +6,10 @@ let filteredCards = [];
 
 let el = {};
 
+// スワイプ検出用の変数
+let touchStartX = 0;
+let touchEndX = 0;
+
 function initializeDOM() {
   el = {
     phrase: document.getElementById("phrase"),
@@ -17,6 +21,7 @@ function initializeDOM() {
     back: document.getElementById("backView"),
     counter: document.getElementById("cardCounter"),
     cardSection: document.getElementById("cardSection"),
+    card: document.getElementById("card"),
   };
 }
 
@@ -66,6 +71,37 @@ function filterCards(section) {
   render();
 }
 
+function nextCard() {
+  index = (index + 1) % filteredCards.length;
+  showAnswer = false;
+  el.front.classList.remove("hidden");
+  el.back.classList.add("hidden");
+  render();
+}
+
+function prevCard() {
+  index = (index - 1 + filteredCards.length) % filteredCards.length;
+  showAnswer = false;
+  el.front.classList.remove("hidden");
+  el.back.classList.add("hidden");
+  render();
+}
+
+function handleSwipe() {
+  const diff = touchStartX - touchEndX;
+  const threshold = 50; // スワイプの最小距離
+  
+  if (Math.abs(diff) > threshold) {
+    if (diff > 0) {
+      // 左へスワイプ（次へ）
+      nextCard();
+    } else {
+      // 右へスワイプ（前へ）
+      prevCard();
+    }
+  }
+}
+
 function setupEventListeners() {
   document.getElementById("sectionFilter").onchange = (e) => {
     filterCards(e.target.value);
@@ -73,20 +109,18 @@ function setupEventListeners() {
 
   document.getElementById("toggleBtn").onclick = toggle;
   document.getElementById("card").onclick = toggle;
-  document.getElementById("nextBtn").onclick = () => {
-    index = (index + 1) % filteredCards.length;
-    showAnswer = false;
-    el.front.classList.remove("hidden");
-    el.back.classList.add("hidden");
-    render();
-  };
-  document.getElementById("prevBtn").onclick = () => {
-    index = (index - 1 + filteredCards.length) % filteredCards.length;
-    showAnswer = false;
-    el.front.classList.remove("hidden");
-    el.back.classList.add("hidden");
-    render();
-  };
+  document.getElementById("nextBtn").onclick = nextCard;
+  document.getElementById("prevBtn").onclick = prevCard;
+  
+  // スワイプイベントリスナー
+  el.card.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, false);
+  
+  el.card.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, false);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
