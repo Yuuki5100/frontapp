@@ -35,7 +35,34 @@ async function loadCards() {
   }
 }
 
+function getUniqueSections() {
+  const sections = new Set();
+  cards.forEach(card => {
+    sections.add(card.section);
+  });
+  return Array.from(sections).sort();
+}
+
+function populateSectionFilter() {
+  const sectionFilter = document.getElementById("sectionFilter");
+  const sections = getUniqueSections();
+  
+  // 既存のオプション（「全セクション」のみ残す）を削除
+  while (sectionFilter.options.length > 1) {
+    sectionFilter.remove(1);
+  }
+  
+  // セクションオプションを動的に追加
+  sections.forEach(section => {
+    const option = document.createElement("option");
+    option.value = section;
+    option.textContent = section;
+    sectionFilter.appendChild(option);
+  });
+}
+
 function initializeApp() {
+  populateSectionFilter();
   render();
   setupEventListeners();
 }
@@ -49,6 +76,7 @@ function render() {
   el.exampleBack.textContent = c.example;
   el.translation.textContent = c.translation;
   el.counter.textContent = `${index + 1}/${filteredCards.length}`;
+  el.cardSection.textContent = c.section;
 }
 
 function toggle() {
@@ -68,7 +96,14 @@ function filterCards(section) {
   showAnswer = false;
   el.front.classList.remove("hidden");
   el.back.classList.add("hidden");
+  
+  // 確実にrenderを呼んでカウンターを更新
   render();
+  
+  // 念のためカウンターを明示的に更新
+  if (filteredCards.length > 0) {
+    el.counter.textContent = `${index + 1}/${filteredCards.length}`;
+  }
 }
 
 function nextCard() {
@@ -77,6 +112,8 @@ function nextCard() {
   el.front.classList.remove("hidden");
   el.back.classList.add("hidden");
   render();
+  // カウンターの明示的な更新
+  el.counter.textContent = `${index + 1}/${filteredCards.length}`;
 }
 
 function prevCard() {
@@ -85,6 +122,8 @@ function prevCard() {
   el.front.classList.remove("hidden");
   el.back.classList.add("hidden");
   render();
+  // カウンターの明示的な更新
+  el.counter.textContent = `${index + 1}/${filteredCards.length}`;
 }
 
 function handleSwipe() {
@@ -102,6 +141,21 @@ function handleSwipe() {
   }
 }
 
+function shuffle() {
+  // Fisher-Yatesアルゴリズムでシャッフル
+  for (let i = filteredCards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
+  }
+  // シャッフル後は最初の問題に戻す
+  index = 0;
+  showAnswer = false;
+  el.front.classList.remove("hidden");
+  el.back.classList.add("hidden");
+  render();
+  el.counter.textContent = `${index + 1}/${filteredCards.length}`;
+}
+
 function setupEventListeners() {
   document.getElementById("sectionFilter").onchange = (e) => {
     filterCards(e.target.value);
@@ -111,6 +165,7 @@ function setupEventListeners() {
   document.getElementById("card").onclick = toggle;
   document.getElementById("nextBtn").onclick = nextCard;
   document.getElementById("prevBtn").onclick = prevCard;
+  document.getElementById("shuffleBtn").onclick = shuffle;
   
   // スワイプイベントリスナー
   el.card.addEventListener("touchstart", (e) => {
