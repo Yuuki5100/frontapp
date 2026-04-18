@@ -1,170 +1,356 @@
-const cardsData = [
+const grammarCardsData = [
   {
     "section": "セクション1",
-    "phrase": "take ~ for granted",
-    "meaning": "〜を当然だと思う",
-    "example": "We often take our health for granted.",
-    "translation": "健康を当然と思いがち"
-  },
-  {
-    "section": "セクション1",
-    "phrase": "come across",
-    "meaning": "出会う、〜に偶然会う",
-    "example": "I came across an old friend at the mall.",
-    "translation": "モールで昔の友人に偶然会った"
+    "phrase": "I am ~.",
+    "meaning": "私は〜です",
+    "example": "I am busy today.",
+    "translation": "私は今日忙しいです"
   },
   {
     "section": "セクション1",
-    "phrase": "deal with",
-    "meaning": "〜に対処する、扱う",
-    "example": "How do you deal with stress?",
-    "translation": "ストレスにどう対処していますか？"
+    "phrase": "You are ~.",
+    "meaning": "あなたは〜です",
+    "example": "You are very kind.",
+    "translation": "あなたはとても親切です"
   },
   {
     "section": "セクション1",
-    "phrase": "look forward to",
-    "meaning": "〜を楽しみにしている",
-    "example": "I look forward to seeing you next week.",
-    "translation": "来週お会いするのを楽しみにしています"
+    "phrase": "This is ~.",
+    "meaning": "これは〜です",
+    "example": "This is my bag.",
+    "translation": "これは私のかばんです"
   },
   {
     "section": "セクション1",
-    "phrase": "on the other hand",
-    "meaning": "一方では、別の面では",
-    "example": "On the other hand, we should consider the cost.",
-    "translation": "一方では、費用を考慮する必要があります"
+    "phrase": "That is ~.",
+    "meaning": "あれは〜です",
+    "example": "That is her car.",
+    "translation": "あれは彼女の車です"
+  },
+  {
+    "section": "セクション1",
+    "phrase": "Is this ~?",
+    "meaning": "これは〜ですか？",
+    "example": "Is this your seat?",
+    "translation": "これはあなたの席ですか？"
+  },
+  {
+    "section": "セクション1",
+    "phrase": "What is ~?",
+    "meaning": "〜は何ですか？",
+    "example": "What is this machine?",
+    "translation": "この機械は何ですか？"
+  },
+  {
+    "section": "セクション1",
+    "phrase": "I like ~.",
+    "meaning": "私は〜が好きです",
+    "example": "I like music.",
+    "translation": "私は音楽が好きです"
+  },
+  {
+    "section": "セクション1",
+    "phrase": "Do you like ~?",
+    "meaning": "〜は好きですか？",
+    "example": "Do you like sushi?",
+    "translation": "寿司は好きですか？"
+  },
+  {
+    "section": "セクション1",
+    "phrase": "I want ~.",
+    "meaning": "私は〜が欲しいです",
+    "example": "I want some water.",
+    "translation": "私は水が欲しいです"
+  },
+  {
+    "section": "セクション1",
+    "phrase": "Can you ~?",
+    "meaning": "〜できますか？ / 〜してくれますか？",
+    "example": "Can you help me?",
+    "translation": "手伝ってくれますか？"
+  },
+
+  {
+    "section": "セクション2",
+    "phrase": "I want to ~.",
+    "meaning": "私は〜したいです",
+    "example": "I want to go home.",
+    "translation": "私は家に帰りたいです"
   },
   {
     "section": "セクション2",
-    "phrase": "get along",
-    "meaning": "仲良くする、関係が良い",
-    "example": "She gets along well with her colleagues.",
-    "translation": "彼女は同僚とうまくいっている"
+    "phrase": "I have to ~.",
+    "meaning": "私は〜しなければならない",
+    "example": "I have to study tonight.",
+    "translation": "私は今夜勉強しなければならない"
   },
   {
     "section": "セクション2",
-    "phrase": "put up with",
-    "meaning": "〜に耐える、我慢する",
-    "example": "I can't put up with this noise anymore.",
-    "translation": "もうこの騒音に耐えられません"
+    "phrase": "I can ~.",
+    "meaning": "私は〜できる",
+    "example": "I can swim well.",
+    "translation": "私は上手に泳げます"
   },
   {
     "section": "セクション2",
-    "phrase": "run into",
-    "meaning": "〜に(偶然)出くわす",
-    "example": "I ran into an old classmate yesterday.",
-    "translation": "昨日、昔のクラスメートに偶然出会った"
+    "phrase": "I cannot ~.",
+    "meaning": "私は〜できない",
+    "example": "I cannot drive a car.",
+    "translation": "私は車を運転できません"
   },
   {
     "section": "セクション2",
-    "phrase": "settle down",
-    "meaning": "落ち着く、定着する",
-    "example": "They settled down in the countryside.",
-    "translation": "彼らは田舎に定着した"
+    "phrase": "Would you like ~?",
+    "meaning": "〜はいかがですか？",
+    "example": "Would you like some tea?",
+    "translation": "お茶はいかがですか？"
   },
   {
     "section": "セクション2",
-    "phrase": "bring about",
-    "meaning": "〜をもたらす、引き起こす",
-    "example": "The new policy brought about major changes.",
-    "translation": "新しい政策は大きな変化をもたらした"
+    "phrase": "Would you like to ~?",
+    "meaning": "〜しませんか？",
+    "example": "Would you like to join us?",
+    "translation": "私たちと一緒に来ませんか？"
+  },
+  {
+    "section": "セクション2",
+    "phrase": "Please ~.",
+    "meaning": "どうぞ〜してください",
+    "example": "Please sit down.",
+    "translation": "どうぞ座ってください"
+  },
+  {
+    "section": "セクション2",
+    "phrase": "Let's ~.",
+    "meaning": "〜しましょう",
+    "example": "Let's start the meeting.",
+    "translation": "会議を始めましょう"
+  },
+  {
+    "section": "セクション2",
+    "phrase": "Do you want to ~?",
+    "meaning": "〜したいですか？",
+    "example": "Do you want to eat now?",
+    "translation": "今食べたいですか？"
+  },
+  {
+    "section": "セクション2",
+    "phrase": "How about ~ing?",
+    "meaning": "〜するのはどうですか？",
+    "example": "How about taking a break?",
+    "translation": "休憩するのはどうですか？"
+  },
+
+  {
+    "section": "セクション3",
+    "phrase": "be going to ~",
+    "meaning": "〜するつもりだ / 〜しそうだ",
+    "example": "I am going to visit Osaka tomorrow.",
+    "translation": "私は明日大阪を訪れるつもりです"
   },
   {
     "section": "セクション3",
-    "phrase": "touch and go",
-    "meaning": "危うい、危険な状態",
-    "example": "It was touch and go whether he would survive.",
-    "translation": "彼が生き残るかどうか危ぶまれた"
+    "phrase": "will ~",
+    "meaning": "〜するつもりだ / 未来のこと",
+    "example": "I will call you later.",
+    "translation": "あとで電話します"
   },
   {
     "section": "セクション3",
-    "phrase": "in the long run",
-    "meaning": "最終的には、長期的には",
-    "example": "In the long run, practice makes perfect.",
-    "translation": "長期的には、練習が完璧さをもたらします"
+    "phrase": "There is ~.",
+    "meaning": "〜がある",
+    "example": "There is a park near my house.",
+    "translation": "私の家の近くに公園があります"
   },
   {
     "section": "セクション3",
-    "phrase": "make up for",
-    "meaning": "〜を埋め合わせる",
-    "example": "I will work overtime to make up for the lost time.",
-    "translation": "失った時間を埋め合わせるために残業します"
+    "phrase": "There are ~.",
+    "meaning": "〜がある（複数）",
+    "example": "There are many books on the desk.",
+    "translation": "机の上にたくさんの本があります"
   },
   {
     "section": "セクション3",
-    "phrase": "go through",
-    "meaning": "〜を経験する、通り抜ける",
-    "example": "She went through a lot after the accident.",
-    "translation": "彼女は事故の後、多くのつらい経験をした"
+    "phrase": "I am ~ing.",
+    "meaning": "私は今〜している",
+    "example": "I am reading a book.",
+    "translation": "私は本を読んでいます"
   },
   {
     "section": "セクション3",
-    "phrase": "carry out",
-    "meaning": "〜を実行する",
-    "example": "The researchers carried out an experiment.",
-    "translation": "研究者たちは実験を実施した"
+    "phrase": "Are you ~ing?",
+    "meaning": "今〜していますか？",
+    "example": "Are you waiting for someone?",
+    "translation": "誰かを待っていますか？"
   },
   {
     "section": "セクション3",
-    "phrase": "turn out",
-    "meaning": "結局〜になる、判明する",
-    "example": "The rumor turned out to be false.",
-    "translation": "そのうわさは誤りだと判明した"
+    "phrase": "Do you have ~?",
+    "meaning": "〜を持っていますか？",
+    "example": "Do you have a pen?",
+    "translation": "ペンを持っていますか？"
   },
   {
     "section": "セクション3",
-    "phrase": "keep up with",
-    "meaning": "〜に遅れずについていく",
-    "example": "I can't keep up with the rapid changes in technology.",
-    "translation": "技術の急速な変化についていけない"
+    "phrase": "I don't have ~.",
+    "meaning": "私は〜を持っていない",
+    "example": "I don't have enough time.",
+    "translation": "私は十分な時間がありません"
+  },
+  {
+    "section": "セクション3",
+    "phrase": "What do you ~?",
+    "meaning": "あなたは何を〜しますか？",
+    "example": "What do you want?",
+    "translation": "あなたは何が欲しいですか？"
+  },
+  {
+    "section": "セクション3",
+    "phrase": "Where do you ~?",
+    "meaning": "どこで / どこへ 〜しますか？",
+    "example": "Where do you work?",
+    "translation": "あなたはどこで働いていますか？"
+  },
+
+  {
+    "section": "セクション4",
+    "phrase": "as ~ as ...",
+    "meaning": "...と同じくらい〜",
+    "example": "This restaurant is as popular as that one.",
+    "translation": "このレストランはあの店と同じくらい人気です"
   },
   {
     "section": "セクション4",
-    "phrase": "break the ice",
-    "meaning": "初対面の緊張をほぐす",
-    "example": "Tell a joke to break the ice at the party.",
-    "translation": "パーティーで場を和ませるためにジョークを言おう"
+    "phrase": "more ~ than ...",
+    "meaning": "...よりもっと〜",
+    "example": "This book is more useful than I expected.",
+    "translation": "この本は思ったより役に立つ"
   },
   {
     "section": "セクション4",
-    "phrase": "all ears",
-    "meaning": "熱心に聞く、よく聞いている",
-    "example": "Tell me what happened. I'm all ears!",
-    "translation": "何が起こったか教えてください。よく聞いていますから！"
+    "phrase": "-er than ...",
+    "meaning": "...より〜",
+    "example": "My brother is taller than me.",
+    "translation": "私の兄は私より背が高い"
   },
   {
     "section": "セクション4",
-    "phrase": "by all means",
-    "meaning": "ぜひとも、もちろん",
-    "example": "By all means, ask questions if you need help.",
-    "translation": "助けが必要なら、ぜひ質問してください"
+    "phrase": "the most ~",
+    "meaning": "最も〜",
+    "example": "She is the most careful person here.",
+    "translation": "彼女はここで最も注意深い人です"
   },
   {
     "section": "セクション4",
-    "phrase": "for good",
-    "meaning": "永久に、これきり",
-    "example": "He left his hometown for good.",
-    "translation": "彼は故郷を永久に去った"
+    "phrase": "too ~ to ...",
+    "meaning": "...するには〜すぎる",
+    "example": "I am too busy to go out.",
+    "translation": "私は忙しすぎて出かけられない"
   },
   {
     "section": "セクション4",
-    "phrase": "at all costs",
-    "meaning": "どんな犠牲を払っても",
-    "example": "We must protect the data at all costs.",
-    "translation": "どんな犠牲を払ってもそのデータを守らなければならない"
+    "phrase": "enough to ~",
+    "meaning": "〜するのに十分な",
+    "example": "She is old enough to travel alone.",
+    "translation": "彼女は一人で旅行できる年齢です"
   },
   {
     "section": "セクション4",
-    "phrase": "so far",
-    "meaning": "今のところ、これまでのところ",
-    "example": "So far, everything has gone smoothly.",
-    "translation": "今のところ、すべて順調に進んでいる"
+    "phrase": "so ~ that ...",
+    "meaning": "とても〜なので...",
+    "example": "He was so tired that he fell asleep quickly.",
+    "translation": "彼はとても疲れていたので、すぐ眠ってしまった"
   },
   {
     "section": "セクション4",
-    "phrase": "in time",
-    "meaning": "間に合って、やがて",
-    "example": "We arrived at the station just in time.",
-    "translation": "私たちはちょうど間に合うように駅に着いた"
+    "phrase": "want + 人 + to ~",
+    "meaning": "人に〜してほしい",
+    "example": "I want you to be careful.",
+    "translation": "私はあなたに気をつけてほしい"
+  },
+  {
+    "section": "セクション4",
+    "phrase": "tell + 人 + to ~",
+    "meaning": "人に〜するように言う",
+    "example": "She told me to wait outside.",
+    "translation": "彼女は私に外で待つよう言った"
+  },
+  {
+    "section": "セクション4",
+    "phrase": "ask + 人 + to ~",
+    "meaning": "人に〜するよう頼む",
+    "example": "I asked him to open the door.",
+    "translation": "私は彼にドアを開けるよう頼んだ"
+  },
+
+  {
+    "section": "セクション5",
+    "phrase": "have been to ~",
+    "meaning": "〜へ行ったことがある",
+    "example": "I have been to Kyoto twice.",
+    "translation": "私は京都に2回行ったことがある"
+  },
+  {
+    "section": "セクション5",
+    "phrase": "have never ~",
+    "meaning": "一度も〜したことがない",
+    "example": "I have never seen that movie.",
+    "translation": "私はその映画を一度も見たことがない"
+  },
+  {
+    "section": "セクション5",
+    "phrase": "Have you ever ~?",
+    "meaning": "今までに〜したことがありますか？",
+    "example": "Have you ever tried natto?",
+    "translation": "納豆を食べたことがありますか？"
+  },
+  {
+    "section": "セクション5",
+    "phrase": "be interested in ~",
+    "meaning": "〜に興味がある",
+    "example": "I am interested in Japanese history.",
+    "translation": "私は日本の歴史に興味があります"
+  },
+  {
+    "section": "セクション5",
+    "phrase": "be good at ~",
+    "meaning": "〜が得意である",
+    "example": "She is good at math.",
+    "translation": "彼女は数学が得意です"
+  },
+  {
+    "section": "セクション5",
+    "phrase": "be afraid of ~",
+    "meaning": "〜を怖がる",
+    "example": "My child is afraid of dogs.",
+    "translation": "私の子どもは犬を怖がります"
+  },
+  {
+    "section": "セクション5",
+    "phrase": "Would you mind ~ing?",
+    "meaning": "〜していただけますか？",
+    "example": "Would you mind closing the window?",
+    "translation": "窓を閉めていただけますか？"
+  },
+  {
+    "section": "セクション5",
+    "phrase": "Do you mind ~ing?",
+    "meaning": "〜しても構いませんか？ / 〜は嫌ですか？",
+    "example": "Do you mind waiting a few minutes?",
+    "translation": "数分待っていただいても構いませんか？"
+  },
+  {
+    "section": "セクション5",
+    "phrase": "If I were you, I would ~.",
+    "meaning": "もし私があなたなら、〜するでしょう",
+    "example": "If I were you, I would take some rest.",
+    "translation": "もし私があなたなら、少し休みます"
+  },
+  {
+    "section": "セクション5",
+    "phrase": "It is important to ~.",
+    "meaning": "〜することは大切だ",
+    "example": "It is important to keep learning.",
+    "translation": "学び続けることは大切だ"
   }
 ];
